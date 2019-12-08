@@ -1,0 +1,21 @@
+server:
+  port: 8787
+  servlet:
+    context-path: /pick
+    jsp:
+      init-parameters:
+        development: true
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:replication://192.168.253.137:3306/empick
+    username: root
+    password: shen*ZHENKU666
+mybatis:
+  mapper-locations: classpath:com/baizhi/mapper/*.xml
+  type-aliases-package: com.baizhi.entity
