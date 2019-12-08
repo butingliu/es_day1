@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.UserDao">
+    <!--    //查询一个-->
+    <select id="selectByNameAndWord" resultType="User">
+        select id,name,realname,sex,password,salt from empick_user
+         where name=#{username} and password=#{password}
+    </select>
+
+    <!--    添加用户-->
+    <insert id="addUser">
+        insert into empick_user values(null,#{name},#{realname},#{sex},#{password},#{salt})
+    </insert>
+
+</mapper>

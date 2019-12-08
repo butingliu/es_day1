@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.EmployeesDao">
+    <resultMap id="EmMap" type="Employees">
+        <id column="aid" property="id"/>
+        <result column="aname" property="name"/>
+        <result column="asalary" property="salary"/>
+        <result column="aage" property="age"/>
+        <result column="abir" property="bir"/>
+        <association property="department" javaType="Department">
+            <id column="bid" property="id"/>
+            <result column="bname" property="name"/>
+        </association>
+    </resultMap>
+    <!--    //查询一条员工-->
+    <select id="selectEmployess" resultMap="EmMap">
+        select a.id as aid,a.name as aname,a.salary as asalary,a.age as aage,a.bir as abir,
+        b.id as bid,b.name as bname from empick_empl a left join empick_dept b on a.did=b.id
+        where a.id=#{id}
+    </select>
+
+
+    <!--    //根据部门查询员工-->
+    <select id="selectByBid" resultMap="EmMap">
+        select a.id as aid,a.name as aname,a.salary as asalary,a.age as aage,a.bir as abir,
+        b.id as bid,b.name as bname from empick_empl a left join empick_dept b on a.did=b.id
+        where a.did=#{bid}
+    </select>
+
+    <!--    //根据id删除员工-->
+    <delete id="deleteEmployees">
+        delete from empick_empl where id=#{id}
+    </delete>
+    <!--    //根据bid删除员工-->
+    <delete id="deleteEmployeesByBid">
+        delete from empick_empl where did=#{bid}
+    </delete>
+    <!--    //修改员工-->
+    <update id="modifyEmployess">
+        update empick_empl set name=#{name},salary=#{salary},age=#{age},bir=#{bir},
+        did=#{department.id} where id=#{id}
+    </update>
+    <!--    //添加员工-->
+    <insert id="addEmployees">
+        insert into empick_empl values(null,#{name},#{salary},#{age},#{bir},#{department.id})
+    </insert>
+    <select id="selectByPage" resultMap="EmMap">
+        select a.id as aid,a.name as aname,a.salary as asalary,a.age as aage,a.bir as abir,
+        b.id as bid,b.name as bname from empick_empl a left join empick_dept b on a.did=b.id
+        where a.did=#{bid} limit #{currentPage},#{pageSize}
+    </select>
+</mapper>
