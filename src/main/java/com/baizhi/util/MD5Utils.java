@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class MD5Utils {
 
-    //给定一个字符串
+    //给定一个字符串aa
     static String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
     public static String getSalt() {
