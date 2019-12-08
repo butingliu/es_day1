@@ -1,0 +1,4 @@
+,author=#{author},cover=#{cover,jdbcType=NULL},publisher=#{publisher},
+  borndate=#{borndate},edition=#{edition},birthday=#{birthday},impression=#{impression},isbn=#{isbn},words=#{words},page=#{page},
+  format=#{format},paper=#{paper},pack=#{pack},price=#{price},dprice=#{dprice},edit=#{edit},description=#{description},intro=#{intro},
+  basedir=#{basedir},media=#{media},category_id=#{category.id},sales=#{sales},sale=#{sale}
